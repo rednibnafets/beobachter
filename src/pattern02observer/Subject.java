@@ -9,33 +9,28 @@ import java.util.ArrayList;
 
 /**
  *
- * @author stefan
+ * @author s
  * original code see
  * http://www.vincehuston.org/dp/ObserverDemosJava
  * accessed on 2016-02-20
  */
 public class Subject {
-    // 1. The "independent" abs
+    // the "independent" abs
 
-    // use ArrayList
-    private ArrayList< Observer> observers;  // 3. Coupled to base class
-    // not needed when we use ArrayList
-    //private int totalObs = 0 
+    // use ArrayList instead of an array
+    private ArrayList< Observer> observers;  // coupled to the (abstract) base class
     private int state;
 
-    // add default ctor
+    // add a default ctor
     public Subject() {
         observers = new ArrayList<>();
         state = 0;
     }
-
-    // modify: use observers ArrayList
-//    public void attach(Observer o) {
-//        observers[totalObs++] = o;
-//    } // 3. Coupled
+    
+    // coupled
     public void attach(Observer o) {
         observers.add(o);
-    } // 3. Coupled
+    } 
 
     public int getState() {
         return state;
@@ -47,10 +42,6 @@ public class Subject {
     }
 
     private void notifyObservers() {
-//        for (int i = 0; i < totalObs; i++) {
-//            observers[i].update();         // 3. Coupled to base class
-//        }
-// use a for each loop
         for (Observer o : observers) {
             o.update();
         }
