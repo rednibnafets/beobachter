@@ -13,6 +13,8 @@
 package pattern02observer;
 
 import java.util.Random;
+import subjectSeparated.ConcreteObserver;
+import subjectSeparated.ConcreteSubject;
 
 /**
  *
@@ -27,7 +29,39 @@ public class Pattern02observer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Subject subject = new Subject();
+
+        //testVersion1() ;
+        
+        testVersion2();
+        
+
+    }
+
+    public static int testVersion2()
+    {
+        
+        ConcreteSubject cs = new ConcreteSubject();
+        
+        cs.subscribe( new ConcreteObserver("Spechtler") );
+        cs.subscribe( new ConcreteObserver("Wildebeest"));
+        cs.subscribe( new ConcreteObserver("Noana")) ;
+        
+        cs.notifyObservers();
+        
+        
+        ConcreteSubject cs2 = new ConcreteSubject();
+        cs2.subscribe ( new ConcreteObserver("SchwoarzaANS") );
+        cs2.subscribe ( new ConcreteObserver("SchwoarzaZWA") );
+        
+        cs2.notifyObservers();
+        
+        
+        return 0;
+    }
+    
+    public static int testVersion1()
+    {
+         Subject subject = new Subject();
         
         // 7. Client configures the number and type of Observers
         new HexObserver(subject);
@@ -41,8 +75,10 @@ public class Pattern02observer {
             System.out.println("\n----------------------------------------------");
             System.out.println("  getState -> " + subject.getState() ) ;
             System.out.println("\n----------------------------------------------");            
-        }
-
+        }   
+    
+        return 0;
+    
     }
 
 }
