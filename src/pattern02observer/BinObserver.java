@@ -8,6 +8,9 @@ package pattern02observer;
 /**
  *
  * @author stefan
+ * original code see
+ * http://www.vincehuston.org/dp/ObserverDemosJava
+ * accessed on 2016-02-20
  */
 public class BinObserver extends Observer {
 
