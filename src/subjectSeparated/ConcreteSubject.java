@@ -1,3 +1,6 @@
+//
+// modified observer: use interfaces
+//
 package subjectSeparated;
 
 import java.util.ArrayList;
