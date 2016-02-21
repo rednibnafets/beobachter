@@ -13,8 +13,9 @@
 package pattern02observer;
 
 import java.util.Random;
-import subjectSeparated.ConcreteObserver;
-import subjectSeparated.ConcreteSubject;
+import subjectSeparated.Agent;
+import subjectSeparated.ObserverImpl;
+import subjectSeparated.SubjectImpl;
 
 /**
  *
@@ -33,29 +34,31 @@ public class Pattern02observer {
         //testVersion1() ;
         
         testVersion2();
-        
-
     }
 
     public static int testVersion2()
     {
         
-        ConcreteSubject cs = new ConcreteSubject();
+        ObserverImpl missionSupport1 = new ObserverImpl("Mrs Moneypenny");
+        ObserverImpl missionSupport2 = new ObserverImpl("Q");
+        ObserverImpl missionSupport3 = new ObserverImpl("M");
         
-        cs.subscribe( new ConcreteObserver("Spechtler") );
-        cs.subscribe( new ConcreteObserver("Wildebeest"));
-        cs.subscribe( new ConcreteObserver("Noana")) ;
+        Agent agent = new Agent("001") ;
         
-        cs.notifyObservers();
+        agent.missionSupport().addObserver(missionSupport1); 
+        agent.missionSupport().addObserver(missionSupport2);        
+        agent.receiveOrder() ;
         
+        System.out.println("--------------------------------------------------");
         
-        ConcreteSubject cs2 = new ConcreteSubject();
-        cs2.subscribe ( new ConcreteObserver("SchwoarzaANS") );
-        cs2.subscribe ( new ConcreteObserver("SchwoarzaZWA") );
+        Agent agent2 = new Agent("002") ;
+        agent2.missionSupport().addObserver(missionSupport3);
+        agent2.receiveOrder() ;
         
-        cs2.notifyObservers();
+        System.out.println("--------------------------------------------------");        
         
-        
+        agent.receiveOrder();
+
         return 0;
     }
     
