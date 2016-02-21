@@ -7,8 +7,8 @@ package subjectSeparated;
  * @author stefan
  */
 public interface SubjectI {
-    void addObserver(ObserverImpl oi);
-    void removeObserver(ObserverImpl oi);
+    void addObserver(ObserverI oi);
+    void removeObserver(ObserverI oi);
     void notifyObservers() ;
     
 }

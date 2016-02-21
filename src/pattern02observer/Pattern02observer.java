@@ -36,6 +36,7 @@ public class Pattern02observer {
         testVersion2();
     }
 
+    // test for package subjectSeparated
     public static int testVersion2()
     {
         
@@ -44,25 +45,28 @@ public class Pattern02observer {
         ObserverImpl missionSupport3 = new ObserverImpl("M");
         
         Agent agent = new Agent("001") ;
+
+        System.out.println("\n-- Agent 001: add 2 observers, issue a new order --------------------");
         
         agent.missionSupport().addObserver(missionSupport1); 
         agent.missionSupport().addObserver(missionSupport2);        
         agent.receiveOrder() ;
         
-        System.out.println("--------------------------------------------------");
+        System.out.println("\n-- Agent 002: add 1 observer, issue a new order ---------------------");
         
         Agent agent2 = new Agent("002") ;
         agent2.missionSupport().addObserver(missionSupport3);
         agent2.receiveOrder() ;
         
-        System.out.println("--------------------------------------------------");        
+        System.out.println("\n-- Agent 001: remove 1 observer, issue a new order ------------------");        
         
         agent.missionSupport().removeObserver(missionSupport2);        
         agent.receiveOrder();
 
         return 0;
     }
-    
+
+    // test for package pattern02observer    
     public static int testVersion1()
     {
          Subject subject = new Subject();
