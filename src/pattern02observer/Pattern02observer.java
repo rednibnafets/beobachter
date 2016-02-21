@@ -39,7 +39,7 @@ public class Pattern02observer {
     public static int testVersion2()
     {
         
-        ObserverImpl missionSupport1 = new ObserverImpl("Mrs Moneypenny");
+        ObserverImpl missionSupport1 = new ObserverImpl("Ms Moneypenny");
         ObserverImpl missionSupport2 = new ObserverImpl("Q");
         ObserverImpl missionSupport3 = new ObserverImpl("M");
         
@@ -57,6 +57,7 @@ public class Pattern02observer {
         
         System.out.println("--------------------------------------------------");        
         
+        agent.missionSupport().removeObserver(missionSupport2);        
         agent.receiveOrder();
 
         return 0;
