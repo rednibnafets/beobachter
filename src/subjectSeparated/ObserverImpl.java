@@ -10,9 +10,10 @@ public class ObserverImpl implements ObserverI {
 
     protected String observername_ ; 
 
-    public ObserverImpl(String name)
+    public ObserverImpl(String name, SubjectI si)
     {
         this.observername_ = name ;
+        si.addObserver(this);          // self-registering
     }
     
     @Override

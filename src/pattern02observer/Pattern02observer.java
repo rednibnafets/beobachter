@@ -16,13 +16,12 @@ import java.util.Random;
 import subjectSeparated.Agent;
 import subjectSeparated.ObserverI;
 import subjectSeparated.ObserverImpl;
+import subjectSeparated.SubjectI;
+import subjectSeparated.SubjectImpl;
 
 /**
  *
  * @author s
- * original code see
- * http://www.vincehuston.org/dp/ObserverDemosJava
- * accessed on 2016-02-20
  */
 public class Pattern02observer {
 
@@ -39,12 +38,12 @@ public class Pattern02observer {
     // test for package subjectSeparated
     public static int testVersion2()
     {
+        SubjectI moonraker = new SubjectImpl() ;
+        ObserverI missionSupport1 = new ObserverImpl("Ms Moneypenny", moonraker);
+        ObserverI missionSupport2 = new ObserverImpl("Q", moonraker);
+        ObserverI missionSupport3 = new ObserverImpl("M", moonraker);
         
-        ObserverI missionSupport1 = new ObserverImpl("Ms Moneypenny");
-        ObserverI missionSupport2 = new ObserverImpl("Q");
-        ObserverI missionSupport3 = new ObserverImpl("M");
-        
-        ObserverI missionSupport4 = new ObserverImpl("009") ;
+        ObserverI missionSupport4 = new ObserverImpl("009", moonraker) ;
         
         Agent agent = new Agent("001") ;
 
@@ -60,7 +59,7 @@ public class Pattern02observer {
         agent2.missionSupport().addObserver(missionSupport3);
         agent2.receiveOrder() ;
         
-        System.out.println("\n-- Agent 001: remove 1 observer, get mission support ------------------");        
+        System.out.println("\n-- Agent 001: remove 1 observer, add 1 observer,  get mission support ------------------");        
         
         agent.missionSupport().addObserver(missionSupport4);
         agent.missionSupport().removeObserver(missionSupport2);        

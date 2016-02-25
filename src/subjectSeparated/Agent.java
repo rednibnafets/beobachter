@@ -7,7 +7,7 @@ public class Agent {
     
     private String name_ ;
     boolean onDuty_ ;
-    private SubjectImpl si_ ;
+    private SubjectI si_ ;
     
     public Agent(String name)
     {
@@ -26,7 +26,7 @@ public class Agent {
     }
     
     // si_ "exposed" (see client / testing code)
-    public SubjectImpl missionSupport()
+    public SubjectI missionSupport()
     {
         //System.out.println("agent: missionSupport()");               
         return si_ ;
