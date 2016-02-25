@@ -14,8 +14,8 @@ package pattern02observer;
 
 import java.util.Random;
 import subjectSeparated.Agent;
+import subjectSeparated.ObserverI;
 import subjectSeparated.ObserverImpl;
-import subjectSeparated.SubjectImpl;
 
 /**
  *
@@ -40,26 +40,29 @@ public class Pattern02observer {
     public static int testVersion2()
     {
         
-        ObserverImpl missionSupport1 = new ObserverImpl("Ms Moneypenny");
-        ObserverImpl missionSupport2 = new ObserverImpl("Q");
-        ObserverImpl missionSupport3 = new ObserverImpl("M");
+        ObserverI missionSupport1 = new ObserverImpl("Ms Moneypenny");
+        ObserverI missionSupport2 = new ObserverImpl("Q");
+        ObserverI missionSupport3 = new ObserverImpl("M");
+        
+        ObserverI missionSupport4 = new ObserverImpl("009") ;
         
         Agent agent = new Agent("001") ;
 
-        System.out.println("\n-- Agent 001: add 2 observers, issue a new order --------------------");
+        System.out.println("\n-- Agent 001: add 2 observers, get mission support --------------------");
         
         agent.missionSupport().addObserver(missionSupport1); 
         agent.missionSupport().addObserver(missionSupport2);        
         agent.receiveOrder() ;
         
-        System.out.println("\n-- Agent 002: add 1 observer, issue a new order ---------------------");
+        System.out.println("\n-- Agent 002: add 1 observer, get mission support ---------------------");
         
         Agent agent2 = new Agent("002") ;
         agent2.missionSupport().addObserver(missionSupport3);
         agent2.receiveOrder() ;
         
-        System.out.println("\n-- Agent 001: remove 1 observer, issue a new order ------------------");        
+        System.out.println("\n-- Agent 001: remove 1 observer, get mission support ------------------");        
         
+        agent.missionSupport().addObserver(missionSupport4);
         agent.missionSupport().removeObserver(missionSupport2);        
         agent.receiveOrder();
 
